@@ -44,4 +44,27 @@ Before you begin, ensure you have the following installed:
 ## Installation
 
 1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/defund.git
+   cd defund
+2. Install dependencies using Bun:
+   ```sh
+   bun install
+3. Create an .env file in the root directory and add your environment variables:
+   ```sh
+   NEXT_PUBLIC_RPC_URL=your_rpc_url
+   NEXT_PUBLIC_CONTRACT_ADDRESS=your_contract_address
+   NEXT_PUBLIC_CHAIN_ID=your_chain_id
 
+## Connecting to Blockchain
+ 1. Install MetaMask browser extension if you haven't already
+ 2.  Create or import a wallet
+ 3.  Connect to the appropriate network:
+     For development: Local Hardhat network (chainId: 31337)
+     For testing: Sepolia Testnet
+     For production: Ethereum Mainnet
+
+     # Local Development Network
+      To run a local blockchain:To run a local blockchain:
+         ```sh
+             npx hardhat node
