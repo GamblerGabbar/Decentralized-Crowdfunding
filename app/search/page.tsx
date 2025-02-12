@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import ProjectList from "../../components/ProjectList"
 
-export default function SearchPage() {
+function SearchResults() {
   const [projects, setProjects] = useState([])
   const searchParams = useSearchParams()
   const query = searchParams.get("q")
@@ -44,3 +44,25 @@ export default function SearchPage() {
   )
 }
 
+// Loading component to show while the search results are being processed
+function SearchLoading() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="animate-pulse">
+        <div className="h-10 bg-gray-200 rounded w-3/4 mb-8"></div>
+        <div className="space-y-4">
+          <div className="h-40 bg-gray-200 rounded"></div>
+          <div className="h-40 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchLoading />}>
+      <SearchResults />
+    </Suspense>
+  )
+}

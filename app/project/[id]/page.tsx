@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import { ethers } from "ethers"
-import { useEthers } from "../../contexts/EthersContext"
-import CrowdfundingPlatform from "../../contracts/CrowdfundingPlatform.json"
+import CrowdfundingPlatform from "@/contracts/CrowdfundingPlatform.json"
+import { useEthers } from "@/contexts/EthersContext"
 
 export default function ProjectPage() {
   const router = useRouter()
@@ -29,13 +29,13 @@ export default function ProjectPage() {
       creator: projectDetails.creator,
       name: projectDetails.name,
       description: projectDetails.description,
-      goal: ethers.utils.formatEther(projectDetails.goal),
-      currentAmount: ethers.utils.formatEther(projectDetails.currentAmount),
-      deadline: new Date(projectDetails.deadline.toNumber() * 1000).toLocaleString(),
-      currentMilestone: projectDetails.currentMilestone.toNumber(),
-      votesForNextMilestone: projectDetails.votesForNextMilestone.toNumber(),
+      goal: ethers.formatEther(projectDetails.goal),
+      currentAmount: ethers.formatEther(projectDetails.currentAmount),
+      deadline: new Date(Number(projectDetails.deadline) * 1000).toLocaleString(),
+      currentMilestone: Number(projectDetails.currentMilestone),
+      votesForNextMilestone: Number(projectDetails.votesForNextMilestone),
       tokenAddress: projectDetails.tokenAddress,
-      milestones: milestones.map((m) => m.toNumber()),
+      milestones: milestones.map((m) => Number(m)),
     })
   }
 
@@ -46,7 +46,7 @@ export default function ProjectPage() {
     const contract = new ethers.Contract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, CrowdfundingPlatform.abi, signer)
 
     try {
-      const tx = await contract.contribute(id, { value: ethers.utils.parseEther(contribution) })
+      const tx = await contract.contribute(id, { value: ethers.parseEther(contribution) })
       await tx.wait()
       loadProject()
       setContribution("")
@@ -126,4 +126,3 @@ export default function ProjectPage() {
     </div>
   )
 }
-
