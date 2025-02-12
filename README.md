@@ -1,7 +1,7 @@
 # DeFund: Decentralized Crowdfunding Platform
 
-DeFund is a decentralized crowdfunding platform built on blockchain technology. It allows users to create, fund, and manage crowdfunding projects in a transparent and decentralized manner.
-website link: [Oceanfund] (https://oceanfund.netlify.app/)
+DeFund is a decentralized crowdfunding platform built on blockchain technology. It allows users to create, fund, and manage crowdfunding projects in a transparent and decentralized manner.  
+[Visit Oceanfund](https://oceanfund.netlify.app/)
 
 ## Table of Contents
 
