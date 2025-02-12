@@ -10,8 +10,6 @@ DeFund is a decentralized crowdfunding platform built on blockchain technology. 
 - [Installation](#installation)
 - [Connecting to Blockchain](#connecting-to-blockchain)
 - [Running the Application](#running-the-application)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -43,20 +41,24 @@ Before you begin, ensure you have the following installed:
 
 ## Installation
 
-1. Clone the repository:
+ 1. Clone the repository:
    ```sh
    git clone https://github.com/yourusername/defund.git
    cd defund
-2. Install dependencies using Bun:
+   ```
+ 2. Install dependencies using Bun:
    ```sh
    bun install
-3. Create an .env file in the root directory and add your environment variables:
+   ```
+ 3. Create an .env file in the root directory and add your environment variables:
    ```sh
    NEXT_PUBLIC_RPC_URL=your_rpc_url
    NEXT_PUBLIC_CONTRACT_ADDRESS=your_contract_address
    NEXT_PUBLIC_CHAIN_ID=your_chain_id
+   ```
 
-## Connecting to Blockchain
+
+ ## Connecting to Blockchain
  1. Install MetaMask browser extension if you haven't already
  2.  Create or import a wallet
  3.  Connect to the appropriate network:
@@ -64,7 +66,40 @@ Before you begin, ensure you have the following installed:
      For testing: Sepolia Testnet
      For production: Ethereum Mainnet
 
-     # Local Development Network
-      To run a local blockchain:To run a local blockchain:
-         ```sh
-             npx hardhat node
+ Local Development Network
+   To run a local blockchain:To run a local blockchain:
+   ```sh
+      npx hardhat node
+   ```
+   To deploy smart contracts:
+   ```sh
+      npx hardhat run scripts/deploy.js --network localhost
+   ```
+
+
+ ## Running the Application
+
+   1. Start the development server:
+      ```sh
+      npm run dev
+      
+   2. Open http://localhost:3000 in your browser
+   
+   3. For production build:
+      ```sh
+      npm run build
+      npm start
+      
+   ### Smart Contract Testing
+   
+   Run the test suite:
+   ```sh
+   npx hardhat test
+   ```
+   ###  Environment Variables
+
+   The following environment variables are required:
+   
+      NEXT_PUBLIC_RPC_URL: RPC URL for the blockchain network
+      NEXT_PUBLIC_CONTRACT_ADDRESS: Deployed contract address
+      NEXT_PUBLIC_CHAIN_ID: Chain ID of the network
